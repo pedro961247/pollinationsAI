@@ -20,11 +20,11 @@ while 1:
 
 imagens = []
 if multdialog == "0":
-    imagens.append(input("Which image to generate??:"))
+    imagens.append(input("Which image to generate?:"))
 elif multdialog == "1":
     loop = 1
     while 1:
-        v = input(str(loop) + ": Which image to generate?? ('.' to exit):")
+        v = input(str(loop) + ": Which image to generate? ('.' to exit):")
         if v == '.':
             break
         else:
@@ -32,9 +32,21 @@ elif multdialog == "1":
             imagens.append(v)
 
 print("")
-diretsave = input("Which directory to save?:")
-if diretsave != "":
-    diretsave = diretsave + "/"
+while True:
+    diretsave = input("Which directory to save? (ENTER to skip):")
+    if diretsave == "":
+        print("No folder")
+        break
+    if diretsave.isspace():
+        pass
+    elif any(letra in diretsave for letra in ["\\","/",":","*",'"',"<",">","|"]):
+        print("Name cannot contain the following letters:")
+        print('\\, /, :, *, ", <, >, |')
+    elif (diretsave != ""):
+        os.mkdir(diretsave)
+        diretsave = diretsave + "/"
+        break
+
 print("")
 
 # Pegar informações para criar a imagem
@@ -121,7 +133,7 @@ for numimg, imag in enumerate(imagens):
             try:
                 f = open(nome, 'wb')
             except:
-                print("Error on generate image")
+                print("Error on create image")
                 input("click ENTER for continue")
 
             f.write(response.content)
