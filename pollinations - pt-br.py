@@ -135,7 +135,7 @@ for numimg, imag in enumerate(imagens):
             try:
                 f = open(nome, 'wb')
             except:
-                print("Erro ao gerar imagens")
+                print("Erro ao criar imagens")
                 input("clique ENTER para continuar")
 
             f.write(response.content)
