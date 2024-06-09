@@ -32,9 +32,21 @@ elif multdialog == "1":
             imagens.append(v)
 
 print("")
-diretsave = input("Qual diretorio salvar?:")
-if diretsave != "":
-    diretsave = diretsave + "/"
+while True:
+    diretsave = input("Qual diretorio salvar? (ENTER para pular):")
+    if diretsave == "":
+        print("Sem pasta")
+        break
+    if diretsave.isspace():
+        pass
+    elif any(letra in diretsave for letra in ["\\","/",":","*",'"',"<",">","|"]):
+        print("Nome não pode conter seguintes letras:")
+        print('\\, /, :, *, ", <, >, |')
+    elif (diretsave != ""):
+        os.mkdir(diretsave)
+        diretsave = diretsave + "/"
+        break
+
 print("")
 
 # Pegar informações para criar a imagem
