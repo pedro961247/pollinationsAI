@@ -31,4 +31,5 @@ Vídeo de demonstração:
 https://youtu.be/k_W8UtOO6vQ
 
 NÃO SOU RESPONSÁVEL PELO QUE É GERADO 
-Leia os Termos da Equipe de Pollinations: https://pollinations.ai/terms
+Leia os Termos da Equipe de Pollinations:
+https://pollinations.ai/terms
