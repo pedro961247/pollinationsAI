@@ -135,6 +135,7 @@ for numimg, imag in enumerate(imagens):
             except:
                 print("Error on create image")
                 input("click ENTER for continue")
+                quit()
 
             f.write(response.content)
             f.close()
