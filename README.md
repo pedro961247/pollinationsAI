@@ -17,7 +17,7 @@ Read the Pollinations Team Terms:
 https://pollinations.ai/terms
 
 PR-BR:
-# Polinizações
+# Pollinations
 Um script que cria imagens automaticamente por inteligência artificial para você!
 
 Se quiser, pode melhorar o script :)
