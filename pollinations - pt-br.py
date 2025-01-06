@@ -128,14 +128,22 @@ for numimg, imag in enumerate(imagens):
         if response.status_code == 502 or response.status_code == 200:
             
             print(rando() + "feito " + str(i + 1) + "/" + quantas + "\033[0m")
+
             if i == 0:
-                nome = diretsave + imag + '.jpg'
+                if len(imag) >= 16:
+                    nome = diretsave + imag[:16] + '.jpg'
+                else:
+                    nome = diretsave + imag + '.jpg'
             else:
-                nome = diretsave + imag + str(i + 1) + '.jpg'
+                if len(imag) >= 16:
+                    nome = diretsave + imag[:16] + str(i + 1) + '.jpg'
+                else:
+                    nome = diretsave + imag + str(i + 1) + '.jpg'
+
             try:
                 f = open(nome, 'wb')
-            except:
-                print("Erro ao criar imagens")
+            except Exception as ex:
+                print("Erro ao criar imagens",ex)
                 input("clique ENTER para continuar")
                 quit()
 
