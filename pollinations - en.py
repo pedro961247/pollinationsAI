@@ -1,6 +1,9 @@
 import requests, os, time, random
 
-print("Welcome!")
+def printt(print_):
+    1
+
+printt("Welcome!")
 print("")
 print("              .__  .__  .__               __  .__                      ")
 print("______   ____ |  | |  | |__| ____ _____ _/  |_|__| ____   ____   ______")
@@ -10,21 +13,23 @@ print("|   __/ \____/|____/____/__|___|  (____  /__| |__|\____/|___|  /____  >")
 print("|__|                            \/     \/                    \/     \/ ")
 print("")
 
-
 while 1:
-    print("(1): Yes.")
-    print("(0): No.")
-    multdialog = input("Would you like to do the function of creating multi-images?:")
+    printt("(1): Yes.")
+    printt("(0): No.")
+    printt("Would you like to do the function of creating multi-images?:")
+    multdialog = input(" >: ")
     if multdialog in ["1","0"]:
         break
 
 imagens = []
 if multdialog == "0":
-    imagens.append(input("Which image to generate?:"))
+    printt("Which image to generate?:")
+    imagens.append(input(" >: "))
 elif multdialog == "1":
     loop = 1
     while 1:
-        v = input(str(loop) + ": Which image to generate? ('.' to exit):")
+        printt(str(loop) + ": Which image to generate? ('.' to exit):")
+        v = input(" >: ")
         if v == '.':
             break
         else:
@@ -33,15 +38,16 @@ elif multdialog == "1":
 
 print("")
 while True:
-    diretsave = input("Which directory to save? (ENTER to skip):")
+    printt("Which directory to save? (ENTER to skip):")
+    diretsave = input(" >: ")
     if diretsave == "":
-        print("No folder")
+        printt("No folder")
         break
     if diretsave.isspace():
         pass
     elif any(letra in diretsave for letra in ["\\","/",":","*",'"',"<",">","|"]):
-        print("Name cannot contain the following letters:")
-        print('\\, /, :, *, ", <, >, |')
+        printt("Name cannot contain the following letters:")
+        printt('\\, /, :, *, ", <, >, |')
     elif (diretsave != ""):
         os.mkdir(diretsave)
         diretsave = diretsave + "/"
@@ -51,19 +57,21 @@ print("")
 
 # Pegar informações para criar a imagem
 while 1:
-    quantas = input("How many images?:")
+    print("How many images?:")
+    quantas = input(" >: ")
     if quantas.isdigit() and int(quantas) <= 10 and int(quantas) >= 1:
         break
     else:
-        print("value its not a number!")
-        print("or")
-        print("The value must be between 1 and 10")
+        printt("value its not a number!")
+        printt("or")
+        printt("The value must be between 1 and 10")
 print("")
 
 tamx, tamy = None, None
 while 1:
-    print("default: 1000x1000")
-    tamanho = input("size? (x, y):")
+    printt("default: 1000x1000")
+    printt("size? (x, y):")
+    tamanho = input(" >: ")
     if not tamanho:
         tamanho = "1000, 1000"
     if ',' in tamanho:
@@ -73,19 +81,18 @@ while 1:
 
             if tamx >= 16 or tamy >= 16:
                 if tamx <= 2048 or tamy <= 2048:
-                    print("Ideal size.")
                     break
                 else:
-                    print("max size: 2048")
+                    printt("max size: 2048")
                     print(tamx, tamy)
             else:
-                print("min size: 16")
+                printt("min size: 16")
                 print(tamx, tamy)
         except:
-            print("unknown value!")
+            printt("unknown value!")
             print(tamanho)
     else:
-        print("unknown value!")
+        printt("unknown value!")
         print(tamanho)
 print("")
 
@@ -94,9 +101,8 @@ print("")
 # Função sair
 def s():
     time.sleep(0.3)
-    print("Exiting!")
+    printt("Exiting!")
 
-# Função para colocar cor aleatoria nos textos
 def rando():
     r = random.randint(1,4)
     if r == 1:
@@ -126,26 +132,35 @@ for numimg, imag in enumerate(imagens):
         if response.status_code == 502 or response.status_code == 200:
             
             print(rando() + "maked " + str(i + 1) + "/" + quantas + "\033[0m")
+
             if i == 0:
-                nome = diretsave + imag + '.jpg'
+                if len(imag) >= 16:
+                    nome = diretsave + imag[:16] + '.jpg'
+                else:
+                    nome = diretsave + imag + '.jpg'
             else:
-                nome = diretsave + imag + str(i + 1) + '.jpg'
+                if len(imag) >= 16:
+                    nome = diretsave + imag[:16] + str(i + 1) + '.jpg'
+                else:
+                    nome = diretsave + imag + str(i + 1) + '.jpg'
+
             try:
                 f = open(nome, 'wb')
-            except:
-                print("Error on create image")
-                input("click ENTER for continue")
+            except Exception as ex:
+                printt("Error on create image:",ex)
+                print("click ENTER for continue")
+                input()
                 quit()
 
             f.write(response.content)
             f.close()
             imagenscaminho.append(os.path.abspath(nome))
         else:
-            print('Error for downloading the image!')
-            print("Error:",response.status_code)
+            printt('Error for downloading the image!')
+            printt("Error:",response.status_code)
             s()
     print("------------------------------------------------------------------------------------------------------------")
     print("")
      
-print("sucessfuly!")
+printt("sucessfuly!")
 s()
