@@ -1,9 +1,6 @@
 import requests, os, time, random
 
-def printt(print_):
-    1
-
-printt("Welcome!")
+print("Welcome!")
 print("")
 print("              .__  .__  .__               __  .__                      ")
 print("______   ____ |  | |  | |__| ____ _____ _/  |_|__| ____   ____   ______")
@@ -14,21 +11,21 @@ print("|__|                            \/     \/                    \/     \/ ")
 print("")
 
 while 1:
-    printt("(1): Yes.")
-    printt("(0): No.")
-    printt("Would you like to do the function of creating multi-images?:")
+    print("(1): Yes.")
+    print("(0): No.")
+    print("Would you like to do the function of creating multi-images?:")
     multdialog = input(" >: ")
     if multdialog in ["1","0"]:
         break
 
 imagens = []
 if multdialog == "0":
-    printt("Which image to generate?:")
+    print("Which image to generate?:")
     imagens.append(input(" >: "))
 elif multdialog == "1":
     loop = 1
     while 1:
-        printt(str(loop) + ": Which image to generate? ('.' to exit):")
+        print(str(loop) + ": Which image to generate? ('.' to exit):")
         v = input(" >: ")
         if v == '.':
             break
@@ -38,16 +35,16 @@ elif multdialog == "1":
 
 print("")
 while True:
-    printt("Which directory to save? (ENTER to skip):")
+    print("Which directory to save? (ENTER to skip):")
     diretsave = input(" >: ")
     if diretsave == "":
-        printt("No folder")
+        print("No folder")
         break
     if diretsave.isspace():
         pass
     elif any(letra in diretsave for letra in ["\\","/",":","*",'"',"<",">","|"]):
-        printt("Name cannot contain the following letters:")
-        printt('\\, /, :, *, ", <, >, |')
+        print("Name cannot contain the following letters:")
+        print('\\, /, :, *, ", <, >, |')
     elif (diretsave != ""):
         os.mkdir(diretsave)
         diretsave = diretsave + "/"
@@ -62,15 +59,15 @@ while 1:
     if quantas.isdigit() and int(quantas) <= 10 and int(quantas) >= 1:
         break
     else:
-        printt("value its not a number!")
-        printt("or")
-        printt("The value must be between 1 and 10")
+        print("value its not a number!")
+        print("or")
+        print("The value must be between 1 and 10")
 print("")
 
 tamx, tamy = None, None
 while 1:
-    printt("default: 1000x1000")
-    printt("size? (x, y):")
+    print("default: 1000x1000")
+    print("size? (x, y):")
     tamanho = input(" >: ")
     if not tamanho:
         tamanho = "1000, 1000"
@@ -83,16 +80,16 @@ while 1:
                 if tamx <= 2048 or tamy <= 2048:
                     break
                 else:
-                    printt("max size: 2048")
+                    print("max size: 2048")
                     print(tamx, tamy)
             else:
-                printt("min size: 16")
+                print("min size: 16")
                 print(tamx, tamy)
         except:
-            printt("unknown value!")
+            print("unknown value!")
             print(tamanho)
     else:
-        printt("unknown value!")
+        print("unknown value!")
         print(tamanho)
 print("")
 
@@ -101,7 +98,7 @@ print("")
 # Função sair
 def s():
     time.sleep(0.3)
-    printt("Exiting!")
+    print("Exiting!")
 
 def rando():
     r = random.randint(1,4)
@@ -147,7 +144,7 @@ for numimg, imag in enumerate(imagens):
             try:
                 f = open(nome, 'wb')
             except Exception as ex:
-                printt("Error on create image:",ex)
+                print("Error on create image:",ex)
                 print("click ENTER for continue")
                 input()
                 quit()
@@ -156,11 +153,11 @@ for numimg, imag in enumerate(imagens):
             f.close()
             imagenscaminho.append(os.path.abspath(nome))
         else:
-            printt('Error for downloading the image!')
-            printt("Error:",response.status_code)
+            print('Error for downloading the image!')
+            print("Error:",response.status_code)
             s()
     print("------------------------------------------------------------------------------------------------------------")
     print("")
      
-printt("sucessfuly!")
+print("sucessfuly!")
 s()
