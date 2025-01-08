@@ -15,7 +15,7 @@ I AM NOT RESPONSIBLE FOR WHAT IS GENERATED
 Read the Pollinations Team Terms: 
 https://pollinations.ai/terms
 
-# Pollinations PR-BR:
+# Pollinations PT-BR:
 Um script que cria imagens automaticamente por inteligência artificial para você!
 
 Se quiser, pode melhorar o script :)
