@@ -1,5 +1,4 @@
-EN-US:
-# pollinations
+# Pollinations EN-US:
 A script that automatically creates images by artificial intelligence for you!
 
 If you want, you can improve :)
@@ -16,8 +15,7 @@ I AM NOT RESPONSIBLE FOR WHAT IS GENERATED
 Read the Pollinations Team Terms: 
 https://pollinations.ai/terms
 
-PR-BR:
-# Pollinations
+# Pollinations PR-BR:
 Um script que cria imagens automaticamente por inteligência artificial para você!
 
 Se quiser, pode melhorar o script :)
